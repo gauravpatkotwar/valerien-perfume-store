@@ -149,7 +149,14 @@ class App {
       const image = container.querySelector('.tilt-image');
       if(!image) return;
 
+      let targetX = 0;
+      let targetY = 0;
+      let currentX = 0;
+      let currentY = 0;
+      let isHovering = false;
+
       container.addEventListener('mousemove', (e) => {
+        isHovering = true;
         const rect = container.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
@@ -157,16 +164,27 @@ class App {
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
         
-        const rotateX = ((y - centerY) / centerY) * -15;
-        const rotateY = ((x - centerX) / centerX) * 15;
-
-        // Apply a 3D tilt effect on top of parallax
-        image.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.15) translateY(${window.scrollY * 0.05}px)`;
+        targetX = ((y - centerY) / centerY) * -15; // rotateX
+        targetY = ((x - centerX) / centerX) * 15;  // rotateY
       });
 
       container.addEventListener('mouseleave', () => {
-        image.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1.15) translateY(${window.scrollY * 0.05}px)`;
+        isHovering = false;
+        targetX = 0;
+        targetY = 0;
       });
+
+      const animateTilt = () => {
+        // Lerp
+        currentX += (targetX - currentX) * 0.05;
+        currentY += (targetY - currentY) * 0.05;
+        
+        // Combine lerped tilt with raw scroll parallax
+        image.style.transform = `perspective(1000px) rotateX(${currentX}deg) rotateY(${currentY}deg) scale(1.15) translateY(${window.scrollY * 0.05}px)`;
+        
+        requestAnimationFrame(animateTilt);
+      };
+      animateTilt();
     });
   }
 
