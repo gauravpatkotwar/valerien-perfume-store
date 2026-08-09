@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VALÉRIEN | Luxury Fragrance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="#" class="nav-link">Shop</a>
+      <a href="#" class="nav-link">Story</a>
+    </div>
+    
+    <div class="nav-brand">
+      <h1>VALÉRIEN</h1>
+    </div>
+    
+    <div class="nav-right">
+      <button class="icon-btn search-btn">
+        <i data-lucide="search"></i>
+      </button>
+      <button class="icon-btn cart-btn" id="open-cart-btn">
+        <i data-lucide="shopping-bag"></i>
+        <span class="cart-badge" id="cart-badge-count">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Photorealistic Image Background -->
+  <div id="image-bg-container" class="image-bg-container">
+    <div id="particles-container"></div>
+  </div>
+
+  <!-- Main Scrollable Content -->
+  <main class="scroll-container">
+    
+    <!-- 1. Splash Page (First Viewport) -->
+    <section class="splash-section">
+      <div class="scroll-indicator">
+        <span>Discover VALÉRIEN</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- 2. Commerce / Add to Bag (Next Page Down) -->
+    <section class="commerce-section">
+      <!-- Left Info Panel -->
+      <div class="product-info-panel scroll-reveal">
+        <div class="product-meta">
+          <span class="category">PARFUM DE LUXE</span>
+          <h2>Elixir Essence</h2>
+          <div class="price-row">
+            <span class="price">$245.00</span>
+            <span class="size">100ML / 3.4 FL.OZ</span>
+          </div>
+        </div>
+        
+        <p class="description">
+          A transcendent blend of midnight jasmine, smoky vanilla, and rare oud. Elixir Essence is captured in a minimalist glass vessel, embodying pure sophistication.
+        </p>
+
+        <div class="notes-grid">
+          <div class="note-item">
+            <span class="note-label">TOP</span>
+            <span class="note-value">Bergamot, Black Pepper</span>
+          </div>
+          <div class="note-item">
+            <span class="note-label">HEART</span>
+            <span class="note-value">Midnight Jasmine, Rose</span>
+          </div>
+          <div class="note-item">
+            <span class="note-label">BASE</span>
+            <span class="note-value">Oud Wood, Smoky Vanilla</span>
+          </div>
+        </div>
+
+        <button class="add-to-cart-btn" id="add-to-cart-hero">
+          Add to Bag
+        </button>
+        
+        <div class="shipping-info">
+          <i data-lucide="truck"></i> Complimentary shipping & returns
+        </div>
+      </div>
+    </section>
+
+    <!-- 2.5 The Ingredients (Visual Grid) -->
+    <section class="ingredients-section">
+      <div class="ingredient-grid">
+        <div class="ig-text scroll-reveal">
+          <h3 class="ig-title">The Essence</h3>
+          <p>Hand-harvested botanicals and rare resins form the soul of VALÉRIEN. We source only the darkest midnight jasmine and the oldest agarwood.</p>
+        </div>
+        <div class="ig-image ig-image-2 scroll-reveal" style="transition-delay: 0.2s;">
+          <img src="/ingredient2.jpg" alt="Flat lay of ingredients">
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. The Story (Brand Heritage) -->
+    <section class="story-section">
+      <div class="story-content">
+        <h3 class="story-title scroll-reveal">The Heritage</h3>
+        <p class="story-text scroll-reveal" style="transition-delay: 0.2s;">
+          Born in the heart of Paris, VALÉRIEN is an ode to the nocturnal elegance of the city. 
+          Master perfumers spent three years distilling the rare, dark essence of midnight jasmine 
+          and smoky vanilla, aging it in charred oak to achieve unparalleled depth.
+        </p>
+        <blockquote class="story-quote scroll-reveal" style="transition-delay: 0.4s;">
+          "A fragrance is not simply worn; it is an aura that precedes you, and a memory you leave behind."
+        </blockquote>
+        <p class="story-text scroll-reveal" style="transition-delay: 0.6s;">
+          Every crystal vessel is hand-polished and sealed with the signature rose-gold crest, 
+          ensuring that each drop of Elixir Essence remains a closely guarded secret until it touches the skin.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Side Cart Drawer -->
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <aside id="cart-drawer" class="cart-drawer">
+    <div class="cart-header">
+      <h3>Your Bag</h3>
+      <button class="close-btn" id="close-cart-btn"><i data-lucide="x"></i></button>
+    </div>
+    
+    <div class="cart-body">
+      <div id="empty-cart-msg" class="empty-cart">
+        <p>Your bag is empty.</p>
+        <button id="continue-shopping-btn" class="continue-shopping">Continue Shopping</button>
+      </div>
+      
+      <div id="cart-items-container" class="cart-items">
+        <!-- JS injects items here -->
+      </div>
+    </div>
+
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total</span>
+        <span id="cart-total-price">$0.00</span>
+      </div>
+      <button class="checkout-btn" id="checkout-btn" disabled>Checkout Securely</button>
+    </div>
+  </aside>
+
+  <!-- Custom Cursor -->
+  <div id="custom-cursor" class="custom-cursor"></div>
+
+  <!-- Script tags -->
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
