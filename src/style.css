@@ -113,6 +113,60 @@ body {
   to { opacity: 1; }
 }
 
+/* Hide default scrollbar */
+::-webkit-scrollbar {
+  display: none;
+}
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Film Grain Overlay */
+.film-grain {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.15;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Central Architectural Line */
+.central-guide-line {
+  position: fixed;
+  top: 0; left: 50%;
+  width: 0.5px;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.05);
+  z-index: 90;
+  pointer-events: none;
+}
+
+/* Vertical Edge Text */
+.edge-text {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  font-family: var(--font-sans);
+  font-size: 0.6rem;
+  letter-spacing: 12px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  z-index: 90;
+  pointer-events: none;
+  font-weight: 200;
+}
+.edge-left { left: 1rem; }
+.edge-right { right: 1rem; transform: translateY(-50%) rotate(90deg); }
+
+/* Magnetic Elements */
+.magnetic {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
 /* Navbar (Frosted Glass) */
 .navbar {
   position: fixed;
@@ -123,9 +177,9 @@ body {
   align-items: center;
   padding: 3rem 6rem; /* Massive padding */
   z-index: 100;
-  background: rgba(8, 6, 5, 0.05);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(8, 6, 5, 0.01); /* almost completely transparent */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   border-bottom: 0.5px solid rgba(255, 255, 255, 0.05);
   animation: fadeIn 2s ease-out; /* Slow dramatic reveal */
 }

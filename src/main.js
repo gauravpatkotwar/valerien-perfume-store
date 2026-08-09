@@ -22,6 +22,28 @@ class App {
     this.initCursor();
     this.initParticles();
     this.initScrollReveal();
+    this.initMagneticElements();
+  }
+
+  initMagneticElements() {
+    const magnetics = document.querySelectorAll('.magnetic');
+    
+    magnetics.forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const h = rect.width / 2;
+        const v = rect.height / 2;
+        const x = e.clientX - rect.left - h;
+        const y = e.clientY - rect.top - v;
+        
+        // 0.3 factor limits the pull strength for subtlety
+        btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = 'translate(0px, 0px)';
+      });
+    });
   }
 
   initCursor() {

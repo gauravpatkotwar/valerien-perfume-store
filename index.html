@@ -10,6 +10,12 @@
   <link rel="stylesheet" href="./src/style.css">
 </head>
 <body>
+  <!-- Avant-Garde Structural Elements -->
+  <div class="film-grain"></div>
+  <div class="central-guide-line"></div>
+  <div class="edge-text edge-left">EST. PARIS 2026</div>
+  <div class="edge-text edge-right">L'ÉLIXIR ESSENCE</div>
+  <div id="custom-cursor" class="custom-cursor"></div>
 
   <!-- Navigation -->
   <nav class="navbar">
@@ -81,9 +87,9 @@
           </div>
         </div>
 
-        <button class="add-to-cart-btn" id="add-to-cart-hero">
-          Add to Bag
-        </button>
+          <button class="add-to-cart-btn magnetic" id="add-to-cart-hero" data-id="1" data-name="VALÉRIEN Midnight Jasmine" data-price="450" data-img="/hero-bg.jpg">
+            Add to Bag
+          </button>
         
         <div class="shipping-info">
           <i data-lucide="truck"></i> Complimentary shipping & returns
@@ -129,7 +135,7 @@
   <aside id="cart-drawer" class="cart-drawer">
     <div class="cart-header">
       <h3>Your Bag</h3>
-      <button class="close-btn" id="close-cart-btn"><i data-lucide="x"></i></button>
+      <button class="close-btn magnetic" id="close-cart-btn"><i data-lucide="x"></i></button>
     </div>
     
     <div class="cart-body">
