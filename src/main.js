@@ -24,6 +24,8 @@ class App {
     this.initParticles();
     this.initScrollReveal();
     this.initMagneticElements();
+    this.initTypography();
+    this.initParallax();
   }
 
   initPreloader() {
@@ -62,20 +64,78 @@ class App {
     const spotlight = document.getElementById('cursor-spotlight');
     if (!cursor || window.matchMedia("(pointer: coarse)").matches) return; // Skip on mobile
 
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let cursorX = mouseX;
+    let cursorY = mouseY;
+    
+    // Physics lerp factor
+    const speed = 0.1;
+
     document.addEventListener('mousemove', (e) => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
+      mouseX = e.clientX;
+      mouseY = e.clientY;
       
+      // Spotlight follows instantly
       if(spotlight) {
-        spotlight.style.left = e.clientX + 'px';
-        spotlight.style.top = e.clientY + 'px';
+        spotlight.style.left = mouseX + 'px';
+        spotlight.style.top = mouseY + 'px';
       }
     });
+
+    const animateCursor = () => {
+      const dx = mouseX - cursorX;
+      const dy = mouseY - cursorY;
+      
+      cursorX += dx * speed;
+      cursorY += dy * speed;
+      
+      cursor.style.left = cursorX + 'px';
+      cursor.style.top = cursorY + 'px';
+      
+      requestAnimationFrame(animateCursor);
+    };
+    animateCursor();
 
     const hoverElements = document.querySelectorAll('button, a, .icon-btn');
     hoverElements.forEach(el => {
       el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
       el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+    });
+  }
+
+  initTypography() {
+    const splitTexts = document.querySelectorAll('.split-text');
+    splitTexts.forEach(el => {
+      const text = el.textContent;
+      el.textContent = '';
+      
+      let delay = 0;
+      for(let char of text) {
+        const span = document.createElement('span');
+        span.textContent = char;
+        if(char === ' ') {
+          span.style.width = '0.5em';
+          span.style.display = 'inline-block';
+        } else {
+          span.className = 'char-span';
+          span.style.transitionDelay = `${delay}s`;
+          delay += 0.05;
+        }
+        el.appendChild(span);
+      }
+    });
+  }
+
+  initParallax() {
+    const parallaxImages = document.querySelectorAll('.parallax-img');
+    
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      parallaxImages.forEach(img => {
+        // Move image inside its container
+        img.style.transform = `translateY(${scrollY * 0.15}px)`;
+      });
     });
   }
 
@@ -109,9 +169,13 @@ class App {
       rootMargin: "0px 0px -50px 0px"
     });
 
-    document.querySelectorAll('.scroll-reveal').forEach(el => {
+    document.querySelectorAll('.scroll-reveal, .split-text').forEach(el => {
       observer.observe(el);
     });
+    
+    // Auto reveal nav brand
+    const navBrand = document.querySelector('.nav-brand h1');
+    if(navBrand) setTimeout(() => navBrand.classList.add('visible'), 2500);
   }
 }
 

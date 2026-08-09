@@ -432,6 +432,35 @@ body {
   letter-spacing: 1px;
 }
 
+/* Typography Stagger Effects */
+.split-text {
+  display: inline-block;
+}
+.char-span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.visible .char-span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Gold Leaf Text Mask */
+.gold-leaf-text {
+  background: radial-gradient(circle, #e6c888 0%, #a67c00 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: goldShimmer 5s ease infinite alternate;
+}
+
+@keyframes goldShimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
 /* Ultra-Minimalist Ghost Button */
 .add-to-cart-btn {
   width: 100%;
