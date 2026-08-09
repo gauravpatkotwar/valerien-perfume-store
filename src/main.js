@@ -26,6 +26,7 @@ class App {
     this.initMagneticElements();
     this.initTypography();
     this.initParallax();
+    this.initTilt();
   }
 
   initCipherGate() {
@@ -146,8 +147,35 @@ class App {
     window.addEventListener('scroll', () => {
       const scrollY = window.scrollY;
       parallaxImages.forEach(img => {
-        // Move image inside its container
-        img.style.transform = `translateY(${scrollY * 0.15}px)`;
+        // Reduced magnitude to prevent "half popping" out of container
+        img.style.transform = `translateY(${scrollY * 0.05}px) scale(1.15)`;
+      });
+    });
+  }
+
+  initTilt() {
+    const containers = document.querySelectorAll('.tilt-container');
+    containers.forEach(container => {
+      const image = container.querySelector('.tilt-image');
+      if(!image) return;
+
+      container.addEventListener('mousemove', (e) => {
+        const rect = container.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = ((y - centerY) / centerY) * -15;
+        const rotateY = ((x - centerX) / centerX) * 15;
+
+        // Apply a 3D tilt effect on top of parallax
+        image.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.15) translateY(${window.scrollY * 0.05}px)`;
+      });
+
+      container.addEventListener('mouseleave', () => {
+        image.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1.15) translateY(${window.scrollY * 0.05}px)`;
       });
     });
   }
