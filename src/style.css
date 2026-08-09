@@ -663,14 +663,12 @@ body {
 
 .marquee-content {
   display: inline-block;
-  white-space: nowrap;
-  font-family: var(--font-serif);
+  font-family: 'Cormorant Garamond', serif;
   font-size: 8rem;
-  font-weight: 300;
-  color: transparent;
-  -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.1);
-  letter-spacing: 4px;
-  animation: marquee 40s linear infinite;
+  letter-spacing: 0.2em;
+  color: rgba(212, 175, 55, 0.2);
+  -webkit-text-stroke: 1px rgba(212, 175, 55, 0.8);
+  animation: marquee 30s linear infinite;
 }
 
 @keyframes marquee {
