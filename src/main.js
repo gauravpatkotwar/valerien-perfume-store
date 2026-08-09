@@ -101,47 +101,19 @@ class App {
   }
 
   initCursor() {
-    const cursor = document.getElementById('custom-cursor');
     const spotlight = document.getElementById('cursor-spotlight');
-    if (!cursor || window.matchMedia("(pointer: coarse)").matches) return; // Skip on mobile
+    if (!spotlight || window.matchMedia("(pointer: coarse)").matches) return; // Skip on mobile
 
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
-    let cursorX = mouseX;
-    let cursorY = mouseY;
-    
-    // Physics lerp factor
-    const speed = 0.1;
 
     document.addEventListener('mousemove', (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
       
       // Spotlight follows instantly
-      if(spotlight) {
-        spotlight.style.left = mouseX + 'px';
-        spotlight.style.top = mouseY + 'px';
-      }
-    });
-
-    const animateCursor = () => {
-      const dx = mouseX - cursorX;
-      const dy = mouseY - cursorY;
-      
-      cursorX += dx * speed;
-      cursorY += dy * speed;
-      
-      cursor.style.left = cursorX + 'px';
-      cursor.style.top = cursorY + 'px';
-      
-      requestAnimationFrame(animateCursor);
-    };
-    animateCursor();
-
-    const hoverElements = document.querySelectorAll('button, a, .icon-btn');
-    hoverElements.forEach(el => {
-      el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
-      el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+      spotlight.style.left = mouseX + 'px';
+      spotlight.style.top = mouseY + 'px';
     });
   }
 

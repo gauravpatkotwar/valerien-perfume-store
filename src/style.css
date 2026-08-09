@@ -34,27 +34,7 @@ body {
   }
 }
 
-/* Custom Cursor */
-.custom-cursor {
-  position: fixed;
-  top: 0; left: 0;
-  width: 12px;
-  height: 12px;
-  border: 1px solid var(--accent-rose);
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  z-index: 9999;
-  transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1), height 0.5s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.5s;
-  mix-blend-mode: difference;
-}
 
-.custom-cursor.hovering {
-  width: 50px;
-  height: 50px;
-  background-color: rgba(214, 156, 132, 0.1);
-  border-color: transparent;
-}
 
 /* Cursor Spotlight */
 .cursor-spotlight {
