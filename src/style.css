@@ -174,14 +174,11 @@ body {
 /* Photorealistic Image Background */
 .image-bg-container {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: -1;
-  background-image: url('/hero-bg.jpg');
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background-image: url('/valerien_3d_render_1786306188532.jpg');
   background-size: cover;
-  background-position: center right;
+  background-position: center;
   background-repeat: no-repeat;
   pointer-events: none;
   animation: bgPan 45s infinite alternate ease-in-out; /* Even slower */
