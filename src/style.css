@@ -743,7 +743,16 @@ body {
 }
 
 .ig-image-2 {
-  height: 70vh; /* Epic cinematic height */
+  grid-column: 1 / -1;
+  height: 60vh;
+  margin-top: 4rem;
+  /* Make full edge to edge */
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }
 
 /* Story Section (Heritage) */
