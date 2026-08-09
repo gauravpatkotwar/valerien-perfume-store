@@ -46,6 +46,18 @@
     </div>
   </nav>
 
+  <!-- Rotating Authenticity Seal -->
+  <div class="authenticity-seal">
+    <svg viewBox="0 0 100 100" width="100" height="100">
+      <path id="seal-path" d="M 50, 50 m -40, 0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" fill="none" stroke="none" />
+      <text>
+        <textPath href="#seal-path" startOffset="0" class="seal-text">
+          VALÉRIEN • PREMIER CRU • PARIS • VALÉRIEN • PREMIER CRU • PARIS •
+        </textPath>
+      </text>
+    </svg>
+  </div>
+
   <!-- Photorealistic Image Background -->
   <div id="image-bg-container" class="image-bg-container">
     <div id="particles-container"></div>
@@ -67,39 +79,24 @@
       <!-- Left Info Panel -->
       <div class="product-info-panel scroll-reveal">
         <div class="product-meta">
-          <span class="category">PARFUM DE LUXE</span>
-          <h2>Elixir Essence</h2>
+          <span class="category serial-badge">ÉDITION LIMITÉE: BOTTLE No. 042 / 500</span>
+          <h2 class="split-text">L'Élixir Essence</h2>
           <div class="price-row">
-            <span class="price">$245.00</span>
-            <span class="size">100ML / 3.4 FL.OZ</span>
+            <span class="price">$450.00</span>
+            <span class="size">50ML / 1.7 FL.OZ</span>
           </div>
         </div>
         
         <p class="description">
-          A transcendent blend of midnight jasmine, smoky vanilla, and rare oud. Elixir Essence is captured in a minimalist glass vessel, embodying pure sophistication.
+          A transcendent blend of midnight jasmine, smoky vanilla, and rare oud. Crafted for the absolute elite.
         </p>
 
-        <div class="notes-grid">
-          <div class="note-item">
-            <span class="note-label">TOP</span>
-            <span class="note-value">Bergamot, Black Pepper</span>
-          </div>
-          <div class="note-item">
-            <span class="note-label">HEART</span>
-            <span class="note-value">Midnight Jasmine, Rose</span>
-          </div>
-          <div class="note-item">
-            <span class="note-label">BASE</span>
-            <span class="note-value">Oud Wood, Smoky Vanilla</span>
-          </div>
-        </div>
-
-          <button class="add-to-cart-btn magnetic" id="add-to-cart-hero" data-id="1" data-name="VALÉRIEN Midnight Jasmine" data-price="450" data-img="/hero-bg.jpg">
-            Add to Bag
-          </button>
+        <button class="add-to-cart-btn magnetic" id="add-to-cart-hero" data-id="1" data-name="L'Élixir Essence" data-price="450" data-img="/hero-bg.jpg">
+          Request Private Allocation
+        </button>
         
         <div class="shipping-info">
-          <i data-lucide="truck"></i> Complimentary shipping & returns
+          <i data-lucide="truck"></i> Secure global delivery via private courier
         </div>
       </div>
     </section>
@@ -112,12 +109,26 @@
       </div>
     </div>
 
-    <!-- 2.5 The Ingredients (Visual Grid) -->
+    <!-- 2.5 The Ingredients (Olfactory Pyramid) -->
     <section class="ingredients-section">
       <div class="ingredient-grid">
         <div class="ig-text scroll-reveal">
-          <h3 class="ig-title split-text">The Essence</h3>
-          <p>Hand-harvested botanicals and rare resins form the soul of VALÉRIEN. We source only the darkest midnight jasmine and the oldest agarwood.</p>
+          <h3 class="ig-title split-text">The Olfactory Pyramid</h3>
+          
+          <div class="olfactory-notes">
+            <div class="note-level">
+              <span class="note-label">TÊTE (TOP)</span>
+              <span class="note-desc">Bergamot, Black Pepper, Saffron</span>
+            </div>
+            <div class="note-level">
+              <span class="note-label">CŒUR (HEART)</span>
+              <span class="note-desc">Midnight Jasmine, Turkish Rose</span>
+            </div>
+            <div class="note-level">
+              <span class="note-label">FOND (BASE)</span>
+              <span class="note-desc">Smoky Vanilla, Agarwood, Ambergris</span>
+            </div>
+          </div>
         </div>
         <div class="ig-image ig-image-2 scroll-reveal" style="transition-delay: 0.2s;">
           <img src="/ingredient2.jpg" class="parallax-img" alt="Flat lay of ingredients">
