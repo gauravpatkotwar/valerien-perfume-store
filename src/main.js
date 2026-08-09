@@ -19,13 +19,54 @@ class App {
     this.cart = new ShoppingCart();
     
     // Luxury Features
-    this.initPreloader();
+    this.initCipherGate();
     this.initCursor();
     this.initParticles();
     this.initScrollReveal();
     this.initMagneticElements();
     this.initTypography();
     this.initParallax();
+  }
+
+  initCipherGate() {
+    const gate = document.getElementById('cipher-gate');
+    const input = document.getElementById('cipher-input');
+    const feedback = document.getElementById('cipher-feedback');
+    if(!gate || !input || !feedback) {
+      this.initPreloader();
+      return;
+    }
+
+    // Keep focus on input for the gate
+    input.focus();
+    document.addEventListener('click', () => {
+      if(!gate.classList.contains('unlocked')) input.focus();
+    });
+
+    input.addEventListener('keyup', (e) => {
+      if(e.key === 'Enter') {
+        const val = input.value.trim().toUpperCase();
+        if(val === 'V-2026') {
+          feedback.textContent = 'ALLOCATION APPROVED';
+          feedback.classList.remove('error');
+          feedback.classList.add('success', 'show');
+          input.disabled = true;
+          
+          setTimeout(() => {
+            gate.classList.add('unlocked');
+            this.initPreloader(); // Start preloader AFTER gate opens
+          }, 1500);
+        } else {
+          feedback.textContent = 'ALLOCATION DENIED. PLEASE CONTACT YOUR CONCIERGE.';
+          feedback.classList.add('show', 'error');
+          input.value = '';
+          
+          setTimeout(() => {
+            feedback.classList.remove('show');
+          }, 3000);
+        }
+      }
+    });
   }
 
   initPreloader() {
