@@ -30,7 +30,7 @@ body {
 /* Hide default cursor on desktop */
 @media (pointer: fine) {
   body, a, button, input {
-    cursor: none;
+    
   }
 }
 
@@ -608,7 +608,7 @@ body {
   font-size: 0.75rem;
   letter-spacing: 6px;
   text-transform: uppercase;
-  cursor: none; /* Uses custom cursor */
+   /* Uses custom cursor */
   transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
@@ -862,7 +862,7 @@ body {
   background: none;
   border: none;
   color: var(--text-muted);
-  cursor: none;
+  
   transition: transform 0.5s, color 0.5s;
 }
 .close-btn:hover {
@@ -899,7 +899,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 4px;
   font-size: 0.75rem;
-  cursor: none;
+  
   transition: all 0.5s;
 }
 .continue-shopping:hover {
@@ -965,7 +965,7 @@ body {
   color: var(--text-main);
   width: 35px;
   height: 35px;
-  cursor: none;
+  
   transition: background 0.3s;
 }
 .qty-btn:hover { background: rgba(255,255,255,0.05); }
@@ -981,7 +981,7 @@ body {
   border: none;
   color: var(--text-muted);
   font-size: 0.65rem;
-  cursor: none;
+  
   text-transform: uppercase;
   letter-spacing: 2px;
   transition: color 0.3s;
@@ -1013,7 +1013,7 @@ body {
   font-size: 0.8rem;
   letter-spacing: 6px;
   text-transform: uppercase;
-  cursor: none;
+  
   transition: all 0.5s ease;
   font-weight: 400;
 }
