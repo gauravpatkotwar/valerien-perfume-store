@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>L'Atelier - VALÉRIEN</title>
+  
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./src/style.css">
+</head>
+<body class="atelier-body">
+
+  <!-- Cinematic Preloader -->
+  <div id="preloader" class="preloader">
+    <div class="preloader-line"></div>
+    <div class="preloader-text split-text">L'ATELIER</div>
+    <div class="preloader-text-small">THE VISUAL ARCHIVE</div>
+  </div>
+
+  <div class="edge-text edge-left">VALÉRIEN PARIS</div>
+  <div class="edge-text edge-right">L'ÉLIXIR ESSENCE</div>
+  
+  <div id="cursor-spotlight" class="cursor-spotlight"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="/index.html" class="nav-link">L'Allocation</a>
+    </div>
+    
+    <div class="nav-brand">
+      <a href="/index.html" class="brand-text">VALÉRIEN</a>
+    </div>
+    
+    <div class="nav-right">
+      <button class="icon-btn cart-btn" id="open-cart-btn">
+        <i data-lucide="shopping-bag"></i>
+        <span class="cart-badge" id="cart-badge-count">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Horizontal Scroll Container -->
+  <div class="horizontal-scroll-wrapper">
+    <div class="horizontal-scroll-container" id="horizontal-scroll-container">
+      
+      <!-- Gallery Title Slide -->
+      <div class="h-slide title-slide">
+        <h1 class="split-text">L'ATELIER</h1>
+        <p class="subtitle fade-up">The Visual Archive</p>
+      </div>
+
+      <!-- Image Slides -->
+      <div class="h-slide image-slide">
+        <img src="/valerien_vanity_reflection_1786286433611.jpg" alt="Vanity Reflection">
+      </div>
+      <div class="h-slide image-slide">
+        <img src="/valerien_golden_hour_1786286546982.jpg" alt="Golden Hour">
+      </div>
+      <div class="h-slide image-slide">
+        <img src="/valerien_water_splash_1786286529329.jpg" alt="Water Splash">
+      </div>
+      <div class="h-slide image-slide">
+        <img src="/valerien_macro_text_1786286417214.jpg" alt="Macro Text">
+      </div>
+      <div class="h-slide image-slide">
+        <img src="/valerien_side_profile_rimlight_1786286284307.jpg" alt="Side Profile">
+      </div>
+      <div class="h-slide image-slide">
+        <img src="/valerien_lifestyle_hand_1786286453714.jpg" alt="Lifestyle Hand">
+      </div>
+      <div class="h-slide image-slide">
+        <img src="/valerien_flatlay_topdown_1786286267364.jpg" alt="Flatlay Topdown">
+      </div>
+      
+      <!-- Footer Slide -->
+      <div class="h-slide end-slide">
+        <h2 class="split-text">RETURN TO REGISTRY</h2>
+        <a href="/index.html" class="primary-btn pulse-btn" style="margin-top:2rem">REQUEST ALLOCATION</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script type="module" src="./src/main.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

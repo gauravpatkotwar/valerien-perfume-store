@@ -27,6 +27,7 @@ class App {
     this.initTypography();
     this.initParallax();
     this.initTilt();
+    this.initHorizontalScroll();
   }
 
   initPreloader() {
@@ -108,6 +109,36 @@ class App {
       parallaxImages.forEach(img => {
         // Reduced magnitude to prevent "half popping" out of container
         img.style.transform = `translateY(${scrollY * 0.05}px) scale(1.15)`;
+      });
+    });
+  }
+
+  initHorizontalScroll() {
+    const container = document.getElementById('horizontal-scroll-container');
+    if (!container) return; // Only runs on atelier.html
+
+    // Calculate total width of all slides
+    const totalWidth = container.scrollWidth;
+    
+    // Set the body height so the user can scroll vertically to scrub through horizontal content
+    document.body.style.height = `${totalWidth}px`;
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      
+      // Move container left
+      container.style.transform = `translateX(-${scrollY}px)`;
+
+      // Subtle parallax scale effect for images inside the container
+      const slides = container.querySelectorAll('.image-slide img');
+      slides.forEach(img => {
+        // Find how far the image is from the center of the screen
+        const rect = img.parentElement.getBoundingClientRect();
+        const centerOffset = Math.abs(rect.left + rect.width / 2 - window.innerWidth / 2);
+        
+        // Scale down slightly as it moves away from center
+        const scale = 1 - (centerOffset * 0.00015);
+        img.style.transform = `scale(${Math.max(0.9, scale)})`;
       });
     });
   }

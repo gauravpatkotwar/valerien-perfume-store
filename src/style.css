@@ -1035,3 +1035,71 @@ body {
   .ingredients-section { padding: 4rem 2rem; }
   .ig-image-2 { height: 40vh; }
 }
+
+/* ---------------------------------
+   L'ATELIER HORIZONTAL SCROLL 
+--------------------------------- */
+
+.atelier-body {
+  overflow-x: hidden;
+  height: 100vh;
+}
+
+.horizontal-scroll-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.horizontal-scroll-container {
+  display: flex;
+  height: 100vh;
+  width: max-content; /* Critical for flex row to stretch */
+  will-change: transform;
+}
+
+.h-slide {
+  width: 100vw;
+  height: 100vh;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.h-slide.title-slide {
+  flex-direction: column;
+  background: var(--bg-dark);
+}
+
+.h-slide.title-slide h1 {
+  font-family: var(--font-serif);
+  font-size: 5rem;
+  color: var(--accent-gold);
+  letter-spacing: 20px;
+}
+
+.h-slide.end-slide {
+  flex-direction: column;
+  background: var(--bg-dark);
+}
+
+.h-slide.end-slide h2 {
+  font-family: var(--font-serif);
+  font-size: 3rem;
+  color: var(--text-main);
+  letter-spacing: 15px;
+}
+
+/* The images are scaled dynamically in JS, but base is cover */
+.h-slide.image-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease-out;
+}
