@@ -19,10 +19,21 @@ class App {
     this.cart = new ShoppingCart();
     
     // Luxury Features
+    this.initPreloader();
     this.initCursor();
     this.initParticles();
     this.initScrollReveal();
     this.initMagneticElements();
+  }
+
+  initPreloader() {
+    const preloader = document.getElementById('preloader');
+    if (!preloader) return;
+    
+    // Hold the curtain down for 2.5 seconds to build anticipation
+    setTimeout(() => {
+      preloader.classList.add('hidden');
+    }, 2500);
   }
 
   initMagneticElements() {
@@ -48,11 +59,17 @@ class App {
 
   initCursor() {
     const cursor = document.getElementById('custom-cursor');
+    const spotlight = document.getElementById('cursor-spotlight');
     if (!cursor || window.matchMedia("(pointer: coarse)").matches) return; // Skip on mobile
 
     document.addEventListener('mousemove', (e) => {
       cursor.style.left = e.clientX + 'px';
       cursor.style.top = e.clientY + 'px';
+      
+      if(spotlight) {
+        spotlight.style.left = e.clientX + 'px';
+        spotlight.style.top = e.clientY + 'px';
+      }
     });
 
     const hoverElements = document.querySelectorAll('button, a, .icon-btn');

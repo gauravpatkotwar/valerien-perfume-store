@@ -56,6 +56,60 @@ body {
   border-color: transparent;
 }
 
+/* Cursor Spotlight */
+.cursor-spotlight {
+  position: fixed;
+  top: 0; left: 0;
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.03) 0%, transparent 60%);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  mix-blend-mode: screen;
+}
+
+/* Cinematic Preloader */
+.preloader {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background-color: var(--bg-dark);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.preloader.hidden {
+  transform: translateY(-100%);
+}
+.preloader-line {
+  width: 0;
+  height: 0.5px;
+  background-color: var(--accent-gold);
+  animation: loadLine 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.preloader-text {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  letter-spacing: 16px;
+  color: var(--text-main);
+  opacity: 0;
+  margin-top: 2rem;
+  animation: fadeInText 1s ease-out 1s forwards;
+  font-weight: 300;
+  text-indent: 16px;
+}
+@keyframes loadLine {
+  to { width: 200px; }
+}
+@keyframes fadeInText {
+  to { opacity: 1; }
+}
+
 /* Photorealistic Image Background */
 .image-bg-container {
   position: fixed;
@@ -122,17 +176,6 @@ body {
   scrollbar-width: none;
 }
 
-/* Film Grain Overlay */
-.film-grain {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  pointer-events: none;
-  z-index: 9998;
-  opacity: 0.15;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-}
-
 /* Central Architectural Line */
 .central-guide-line {
   position: fixed;
@@ -178,8 +221,6 @@ body {
   padding: 3rem 6rem; /* Massive padding */
   z-index: 100;
   background: rgba(8, 6, 5, 0.01); /* almost completely transparent */
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
   border-bottom: 0.5px solid rgba(255, 255, 255, 0.05);
   animation: fadeIn 2s ease-out; /* Slow dramatic reveal */
 }
@@ -448,6 +489,33 @@ body {
   stroke-width: 1; /* Thinner icon */
 }
 
+/* Infinite Fashion Marquee */
+.marquee-container {
+  position: relative;
+  width: 100vw;
+  overflow: hidden;
+  padding: 6rem 0;
+  background: var(--bg-dark);
+  border-top: 0.5px solid rgba(255,255,255,0.05);
+}
+
+.marquee-content {
+  display: inline-block;
+  white-space: nowrap;
+  font-family: var(--font-serif);
+  font-size: 8rem;
+  font-weight: 300;
+  color: transparent;
+  -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.1);
+  letter-spacing: 4px;
+  animation: marquee 40s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 /* Ingredients Section */
 .ingredients-section {
   position: relative;
@@ -584,9 +652,7 @@ body {
   position: fixed;
   top: 0; left: 0;
   width: 100vw; height: 100vh;
-  background: rgba(0,0,0,0.8);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(8, 6, 5, 0.95); /* Deep obsidian instead of blur */
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.8s ease;
