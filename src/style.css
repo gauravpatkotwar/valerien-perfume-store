@@ -744,8 +744,9 @@ body {
 
 .ig-image-2 {
   grid-column: 1 / -1;
-  height: 60vh;
-  margin-top: 4rem;
+  height: 100vh; /* Full viewport height */
+  margin-top: 8rem; /* Space from text */
+  margin-bottom: -8rem; /* Break out of bottom padding */
   /* Make full edge to edge */
   width: 100vw;
   position: relative;
@@ -1042,7 +1043,10 @@ body {
   .product-info-panel { width: 100%; padding: 2rem 0; }
   .cart-drawer { width: 100%; right: -100%; }
   .ingredients-section { padding: 4rem 2rem; }
-  .ig-image-2 { height: 40vh; }
+  .ig-image-2 { 
+    height: 100vh;
+    margin-bottom: -4rem; /* Negate mobile padding */
+  }
 }
 
 /* ---------------------------------
