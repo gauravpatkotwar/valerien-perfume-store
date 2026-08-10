@@ -153,10 +153,8 @@ class App {
       let targetY = 0;
       let currentX = 0;
       let currentY = 0;
-      let isHovering = false;
 
       container.addEventListener('mousemove', (e) => {
-        isHovering = true;
         const rect = container.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
@@ -164,27 +162,26 @@ class App {
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
         
-        targetX = ((y - centerY) / centerY) * -15; // rotateX
-        targetY = ((x - centerX) / centerX) * 15;  // rotateY
+        // 2D Pan instead of 3D Tilt
+        targetX = ((x - centerX) / centerX) * -20; 
+        targetY = ((y - centerY) / centerY) * -20; 
       });
 
       container.addEventListener('mouseleave', () => {
-        isHovering = false;
         targetX = 0;
         targetY = 0;
       });
 
-      const animateTilt = () => {
-        // Lerp
+      const animatePan = () => {
         currentX += (targetX - currentX) * 0.05;
         currentY += (targetY - currentY) * 0.05;
         
-        // Combine lerped tilt with raw scroll parallax
-        image.style.transform = `perspective(1000px) rotateX(${currentX}deg) rotateY(${currentY}deg) scale(1.15) translateY(${window.scrollY * 0.05}px)`;
+        // Combine lerped 2D pan with raw scroll parallax
+        image.style.transform = `scale(1.2) translate(${currentX}px, ${currentY + (window.scrollY * 0.05)}px)`;
         
-        requestAnimationFrame(animateTilt);
+        requestAnimationFrame(animatePan);
       };
-      animateTilt();
+      animatePan();
     });
   }
 
