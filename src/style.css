@@ -1112,3 +1112,100 @@ body {
   object-fit: cover;
   transition: transform 0.5s ease-out;
 }
+
+/* ---------------------------------
+   CAMPAIGN VIDEO SECTION
+--------------------------------- */
+
+.campaign-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10vh;
+}
+
+.campaign-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.campaign-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.6) contrast(1.1);
+  transition: filter 0.8s ease;
+}
+
+.campaign-section:hover .campaign-cover {
+  filter: brightness(0.4) contrast(1.2);
+}
+
+.campaign-overlay {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.play-button-wrapper {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.play-button {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.play-button i {
+  width: 32px;
+  height: 32px;
+  margin-left: 5px; /* Visual center adjustment for play triangle */
+}
+
+.play-button-wrapper:hover .play-button {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.campaign-title {
+  font-family: var(--font-serif);
+  font-size: 5rem;
+  letter-spacing: 15px;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 300;
+}
+
+@media (max-width: 768px) {
+  .campaign-title {
+    font-size: 2.5rem;
+    letter-spacing: 8px;
+  }
+}
